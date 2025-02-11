@@ -6,17 +6,20 @@ class TripItem extends StatelessWidget {
   final String id;
   final String title;
   final String imageUrl;
-  final String duration;
+  final int duration;
   final String tripType;
   final Season season;
+//final Function removeItem;
 
-  const TripItem(
-      {required this.id,
-      required this.title,
-      required this.imageUrl,
-      required this.duration,
-      required this.tripType,
-      required this.season});
+  TripItem({
+    required this.id,
+    required this.title,
+    required this.imageUrl,
+    required this.duration,
+    required this.tripType,
+    required this.season,
+    //  required this.removeItem
+  });
 
   String get seasonText {
     switch (season) {
@@ -64,7 +67,15 @@ class TripItem extends StatelessWidget {
 
   void selectTrpi(BuildContext context) {
     Navigator.of(context)
-        .pushNamed(TripDetailScreen.screenRoute, arguments: id);
+        .pushNamed(
+      TripDetailScreen.screenRoute,
+      arguments: id,
+    )
+        .then((result) {
+      if (result != null) {
+        //    removeItem(result);
+      }
+    });
   }
 
   @override
@@ -128,9 +139,9 @@ class TripItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.today,
-                        color: Theme.of(context).cardColor,
+                        color: Colors.amber,
                       ),
                       const SizedBox(
                         width: 6,
@@ -140,9 +151,9 @@ class TripItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.sunny,
-                        color: Theme.of(context).cardColor,
+                        color: Colors.amber,
                       ),
                       const SizedBox(
                         width: 6,
@@ -152,9 +163,9 @@ class TripItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.family_restroom,
-                        color: Theme.of(context).cardColor,
+                        color: Colors.amber,
                       ),
                       const SizedBox(
                         width: 6,
