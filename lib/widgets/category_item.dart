@@ -11,6 +11,7 @@ class CategoryItem extends StatelessWidget {
     Navigator.of(ctx).pushNamed(
       CategoryTripsScreen.screenRoute,
       arguments: {
+        'id': id,
         'title': title,
       },
     );
